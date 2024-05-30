@@ -8,41 +8,34 @@
     width: 100%;
     color: $strong-blue;
     padding: 10%;
-}
 
-
-.form-todos {
-    display: flex;
-    flex-direction: column;
-    padding-left: 40px;
-}
-
-button {
-    @include button-normal-blue;
-    padding-left: 40px; 
-    width: 60%; 
-    padding-top:40px; 
-    &>input {
-        padding-left:12px;
-        font-size: medium;
+    .form-todos {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
     }
 }
 
 .button-todos {
     @include button-normal-blue;
-    margin: 20px 0px 0px 20px; 
+    margin-bottom: 20px;
 }
 
 .nav-todos {
-   display:flex;
-   flex-direction:row;
-   justify-content: flex-end;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .h3-todos {
     text-align: left;
+    margin-top: 20px;
 }
 
 .first-label {
-    padding-top:20px;
+    padding-top: 20px;
+}
+
+hr {
+    margin-bottom: 20px;
 }

@@ -4,10 +4,11 @@
 .servicios {
     @include centered-column-layout;
     padding-bottom: 20px;
+    margin-left: 16px;
 
     &>article {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-between;
         padding: 40px;
         width: 80%;

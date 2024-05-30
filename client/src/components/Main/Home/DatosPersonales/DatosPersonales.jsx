@@ -152,15 +152,15 @@ const DatosPersonales = ({ clienteBuscado }) => {
 
     {clienteBuscado ?
       <section className="contenidosWindows">
-          
-        <form className="form-todos">
-        <h3 className="h3-todos">Datos personales</h3>
-          <hr></hr>
 
+        <form className="form-todos">
           <nav className="nav-todos" >
-          <button className="button-todos">Editar</button>
-          <button className="button-todos" onClick={generarPDF}>Generar pdf</button>
-        </nav>
+            <button className="button-todos">Editar</button>
+            <button className="button-todos" onClick={generarPDF}>Generar pdf</button>
+          </nav>
+
+          <h3 className="h3-todos">Datos personales</h3>
+          <hr></hr>
 
           <label htmlFor="nombre">Nombre:</label>
           <input type="text" name="nombre" id="nombre" defaultValue={clienteBuscado[0].nombre_alumno} /><br></br>
@@ -211,7 +211,7 @@ const DatosPersonales = ({ clienteBuscado }) => {
           <input type="text" name="fecha_registro" id="fecha_registro" defaultValue={new Date(clienteBuscado[0].fecha_registro).toLocaleDateString()} /><br></br>
         </form>
 
-          <form className="form-todos">
+        <form className="form-todos">
           <h3 className="h3-todos">Datos del representante 1</h3>
           <hr></hr>
           <label className="first-label" htmlFor="nombre_representante_legal">Nombre:</label>
@@ -236,7 +236,7 @@ const DatosPersonales = ({ clienteBuscado }) => {
         {clienteBuscado[1] ?
           <form className="form-todos">
             <h3 className="h3-todos">Datos del representante 2</h3>
-          <hr></hr>
+            <hr></hr>
 
             <label className="first-label" htmlFor="nombre_representante_legal">Nombre:</label>
             <input type="text" name="nombre_representante_legal" id="nombre_representante_legal" defaultValue={clienteBuscado[1].nombre_representante_legal} /><br></br>
@@ -257,11 +257,11 @@ const DatosPersonales = ({ clienteBuscado }) => {
             <input type="text" name="telefono_representante_legal" id="telefono_representante_legal" defaultValue={clienteBuscado[1].telefono_representante_legal} /><br></br>
           </form> : <></>}
 
-       
+
         <form className="form-todos">
 
-        <h3>Datos de facturación</h3>
-        <hr></hr>
+          <h3>Datos de facturación</h3>
+          <hr></hr>
 
           <label className="first-label" htmlFor="nombre_datos_facturacion">Nombre:</label>
           <input type="text" name="nombre_datos_facturacion" id="nombre_datos_facturacion" defaultValue={clienteBuscado[0].nombre_datos_facturacion} /><br></br>
