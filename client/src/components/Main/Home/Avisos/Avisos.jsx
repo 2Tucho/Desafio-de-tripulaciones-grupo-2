@@ -34,34 +34,34 @@ const Avisos = () => {
 
   const obtenerAviso = (diasHastaCumpleaños) => {
     if (diasHastaCumpleaños === 30) {
-      return "Falta 1 mes para cumplir 18, ofrecer orientación vocacional";
+      return "1 mes para cumplir 18 ofrecer orientación vocacional";
     } else if (diasHastaCumpleaños === 7) {
-      return "Falta 1 semana para el cumpleaños, revisar documentación ofrecida";
+      return "1 semana para el cumpleaños fidelización cliente";
     } else if (diasHastaCumpleaños === 1) {
-      return "Falta 1 día para el cumpleaños, seguimiento y fidelización cliente";
+      return "1 día para el cumpleaños fidelización cliente";
     }
     return null;
   };
 
   return (
-    <article>
-      <h1>Lista de Alumnos</h1>
-      <ul>
+    <section className='avisosCont'>
+      <h3 className='h3Avisos'>Avisos Importantes</h3>
+      <ul className='avisosUl'>
         {alumnos.map((alumno, index) => {
           const diasHastaCumpleaños = obtenerDiasHastaProximoCumpleaños(alumno.fecha_nacimiento);
           const aviso = obtenerAviso(diasHastaCumpleaños);
-
-          return (
-            <section key={index}>
-              {aviso && <p>{aviso}</p>}
-              <li>
-                {alumno.nombre_alumno} - {new Date(alumno.fecha_nacimiento).toLocaleDateString()}
-              </li>
-            </section>
-          );
+          // Solo renderiza los alumnos que tienen avisos
+          if (aviso) {
+            return (
+                <li key={index} className='avisosLi'>
+                  {alumno.nombre_alumno} <br /> {aviso} 
+                </li>
+            );
+          }
+          return null;
         })}
       </ul>
-    </article>
+    </section>
   );
 };
 
