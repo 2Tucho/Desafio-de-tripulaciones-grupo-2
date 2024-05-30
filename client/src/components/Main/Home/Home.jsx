@@ -19,43 +19,46 @@ const Home = () => {
   });
 
 
+
   return <section className="home">
 
     <nav className="Buscador">
       <Buscador setDNIbuscado={setDNIbuscado} />
     </nav>
 
-    <article className="App">
-      <h1>Calendario</h1>
-      <EventsCalendar />
-    </article>
-
-    {DNIbuscado && (
-      <>
-        <nav className="cabecera_estudiante">
-          <Windows
-            setWindowsEnUso={setWindowsEnUso}
-            DNIbuscado={DNIbuscado}
-            setClienteBuscado={setClienteBuscado}
-          />
-        </nav>
-        {windowsEnUso === "datosPersonales" && (
-          <DatosPersonales clienteBuscado={clienteBuscado.datosPersonales} />
-        )}
-        {windowsEnUso === "servicios" && (
-          <Servicios clienteBuscado={clienteBuscado.servicios} />
-        )}
-        {windowsEnUso === "interacciones" && (
-          <Interacciones clienteBuscado={clienteBuscado.interacciones} />
-        )}
-        {windowsEnUso === "contratos" && (
-          <Contratos clienteBuscado={clienteBuscado.contratos} />
-        )}
-      </>
-    )}
-    <Avisos />
-  </section>
+   
  
+      {DNIbuscado && (
+        <>
+          <nav className="cabecera_estudiante">
+            <Windows
+              setWindowsEnUso={setWindowsEnUso}
+              DNIbuscado={DNIbuscado}
+              setClienteBuscado={setClienteBuscado}
+            />
+          </nav>
+          <br />
+          {windowsEnUso === "datosPersonales" && (
+            <DatosPersonales clienteBuscado={clienteBuscado.datosPersonales} />
+          )}
+          {windowsEnUso === "servicios" && (
+            <Servicios clienteBuscado={clienteBuscado.servicios} />
+          )}
+          {windowsEnUso === "interacciones" && (
+            <Interacciones clienteBuscado={clienteBuscado.interacciones} />
+          )}
+          {windowsEnUso === "contratos" && (
+            <Contratos clienteBuscado={clienteBuscado.contratos} />
+          )}
+          {windowsEnUso === "calendario" && (
+            <EventsCalendar clienteBuscado={clienteBuscado.EventsCalendar} />
+          )}
+        </>
+      )}
+      <Avisos />
+    </section>
+  );
+
 };
 
 export default Home;
