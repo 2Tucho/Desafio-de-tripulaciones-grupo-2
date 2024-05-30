@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
 import { validateEmail, validatePassword } from "../../../utils/regex"; //validacion de email y password 
+import axios from 'axios';
 
 const AdminDashboard = () => {
-
   const [users, setUsers] = useState([]);
   const [nombre, setNombre] = useState("");
   const [apellidos, setApellidos] = useState("");
@@ -53,17 +52,10 @@ const AdminDashboard = () => {
   const handlePassword = (e) => setPassword(e.target.value);
   const handleRole = (e) => setRole(e.target.value);
 
-
   const handleGetUsers = async () => { //muestra todos los usuarios
     try {
       const request = await axios.get('api/users/all');
-      /*  const request = await axios({
-         method: 'get',
-         url: '/api/users/all'
-       }); */
-      console.log("AdminBoard", request);
       setUsers(request.data);
-      console.log("AdminBoard2", request.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -75,7 +67,7 @@ const AdminDashboard = () => {
 
   const handleSignUp = async () => {
     try {
-      //para evitar poner la ruta completa HTTP:\\....se añade en el package Json la linea "PROXY" y esta ruta va al index.js principal
+      //Para evitar poner la ruta completa HTTP:\\....se añade en el package Json la linea "PROXY" y esta ruta va al index.js principal
       const request = await axios.post('api/users/signup', { nombre, apellidos, perfil, email, password, role, status });
       setMessage(request.data.msg);
       alert("Empleado Registrado");
@@ -84,13 +76,10 @@ const AdminDashboard = () => {
     }
   };
 
-  const revokeAccess = async () => {
+  const revokeAccess = async (e) => {
     try {
-      console.log("AdminRevoke", users[0].id_agente);
-      const id = users[0].id_agente;
       //para evitar poner la ruta completa HTTP:\\....se añade en el package Json la linea "PROXY" y esta ruta va al index.js principal
-      const request = await axios.put('api/users/revokeaccess', { id });
-      console.log("AdminRevoke2", email);
+      const request = await axios.put(`api/users/revokeaccess?email=${e}`);
       setMessage(request.data.msg);
       alert("Empleado Desautorizado");
     } catch (error) {
@@ -107,15 +96,15 @@ const AdminDashboard = () => {
         <li>Email: {user.email}</li>
         <li>Rol: {user.role}</li>
         <li>Status: {user.status}</li>
-        <button onClick={revokeAccess}>Revoke Access</button><br /><br /><br />
+        <button onClick={() => revokeAccess(user.email)}>Revoke Access</button><br /><br /><br />
       </ul>
     })
-  }
+  };
 
   return <div>
     <h2>Admin Dashboard</h2>
     <frameset>
-       <frame src='https://desafiotripulacionesds.streamlit.app/?embedded=true' />
+      <frame src='https://desafiotripulacionesds.streamlit.app/?embedded=true' />
     </frameset>
 
     <div className="sign-form">
@@ -132,10 +121,11 @@ const AdminDashboard = () => {
         <option value="admin">Admin</option>
       </select>
       <button onClick={handleSignUp}>Sign Up</button><br /><br />
+      <button onClick={handleGetUsers}>Get All Users</button>
+      <button onClick={handleClean}>Clean</button>
     </div>
 
-    <button onClick={handleGetUsers}>Get All Users</button>
-    <button onClick={handleClean}>Clean</button>
+
 
     {printUsers(users)}
 

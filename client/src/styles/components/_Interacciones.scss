@@ -1,48 +1,88 @@
 @import '../utils/mixins.scss';
 @import '../utils/variables.scss';
 
+
 .interacciones {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 5px;
-    background-color: white;
+
+    .botonInteracciones {
+        width: 40%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &>h1 {
+        font-size: large;
+    }
 
     &>article {
         display: flex;
         justify-content: space-between;
         align-items: center;
-       
-
-        &>div {
-            display: flex;
-            flex-direction: row;
-        }
     }
 
-    .interaccionesCard  {
-        @include form ($purple);
+    &>nav button {
+        justify-content: flex-end;
+        @include button-normal-blue;
+        margin: 5px;
+        font-size: large;
+    }
+
+    .interaccionesCard {
         display: flex;
         flex-direction: column;
         padding: 8px;
-        border: 2px solid white;
+        border: 2px solid black;
         border-radius: 8px;
         margin-bottom: 8px;
+        margin-top: 16px;
 
-        &>div {
+        .motivo_fecha {
             display: flex;
-            justify-content: space-evenly;
-            margin-bottom: 5px;
+            flex-direction: row;
+            align-items: center;
+            padding: 20px;
 
-            &>div {
-                &>label {
-                    margin-right: 5px;
-                }
+            &>label {
+                margin-right: 8px;
+            }
+
+            &>select {
+                margin-right: 16px;
             }
         }
 
-        &>textarea {
-            height: 60px;
+        .observaciones {
+            display: flex;
+            flex-direction: column;
+
+            &>textarea {
+                height: 48px;
+                width: 380px;
+                padding: 6px;
+                margin-bottom: 16px;
+            }
+        }
+
+        &>button {
+            margin-top: 12px;
         }
     }
+
+    .crearInteraccion {
+        margin-top: 48px;
+    }
+
+}
+
+select {
+    height: 32px;
+}
+
+input {
+    padding-left: 5px;
+    height: 32px;
 }

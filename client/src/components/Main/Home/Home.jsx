@@ -5,6 +5,7 @@ import Servicios from "./Servicios"
 import DatosPersonales from "./DatosPersonales";
 import Interacciones from "./Interacciones";
 import Contratos from "./Contratos";
+import EventsCalendar from './Calendar/EventsCalendar';
 import Avisos from "./Avisos";
 
 const Home = () => {
@@ -17,20 +18,21 @@ const Home = () => {
     contratos: ""
   });
 
-  return (
-    <section className="home">
-      <div className="Buscador">
-        <Buscador setDNIbuscado={setDNIbuscado} />
-      </div>
+  return <section className="home">
+    <nav className="Buscador">
+      <Buscador setDNIbuscado={setDNIbuscado} />
+    </nav>
+
       {DNIbuscado && (
         <>
           <nav className="cabecera_estudiante">
-            <Windows 
-              setWindowsEnUso={setWindowsEnUso} 
-              DNIbuscado={DNIbuscado} 
-              setClienteBuscado={setClienteBuscado} 
+            <Windows
+              setWindowsEnUso={setWindowsEnUso}
+              DNIbuscado={DNIbuscado}
+              setClienteBuscado={setClienteBuscado}
             />
           </nav>
+          <br/>
           {windowsEnUso === "datosPersonales" && (
             <DatosPersonales clienteBuscado={clienteBuscado.datosPersonales} />
           )}
@@ -43,11 +45,14 @@ const Home = () => {
           {windowsEnUso === "contratos" && (
             <Contratos clienteBuscado={clienteBuscado.contratos} />
           )}
+          {windowsEnUso === "calendario" && (
+            <EventsCalendar clienteBuscado={clienteBuscado.EventsCalendar} />
+          )}
         </>
       )}
       <Avisos />
     </section>
-  );
+
 };
 
 export default Home;

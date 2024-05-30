@@ -6,16 +6,11 @@ import Tab from '@mui/material/Tab';
 import { useState } from "react";
 import theme from '../../../../theme';
 
-
-
 const Windows = ({ setWindowsEnUso, DNIbuscado, setClienteBuscado }) => {
-
   const [value, setValue] = useState('Datos personales');
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
 
   function clickWindows(windows) {
     setWindowsEnUso(windows);
@@ -23,17 +18,16 @@ const Windows = ({ setWindowsEnUso, DNIbuscado, setClienteBuscado }) => {
       datosPersonales: "",
       servicios: "",
       interacciones: "",
-      contratos: ""
+      contratos: "",
     })
     const url = `http://localhost:5000/api/info/${windows}?dni=${DNIbuscado}`
-    console.log(windows)
     try {
-      console.log(windows)
-      const res = axios.get(url);
+      let res = ""
+      if (windows == "calendario") {
+        res = ""
+      } else { res = axios.get(url) }
 
-      console.log(res)
       if (windows == "datosPersonales") {
-
         res.then(response => setClienteBuscado(prev => {
           return { ...prev, datosPersonales: response.data }
         }));
@@ -45,59 +39,62 @@ const Windows = ({ setWindowsEnUso, DNIbuscado, setClienteBuscado }) => {
         res.then(response => setClienteBuscado(prev => {
           return { ...prev, interacciones: response.data }
         }));
-      } else {
+      } else if (windows == "contratos") {
         res.then(response => setClienteBuscado(prev => {
           return { ...prev, contratos: response.data }
         }));
-      }
+      } else null
+
     } catch {
       console.log("ERROR: NOT FOUND");
     }
   };
 
-
-
   return <>
     <section className="cabecera_estudiante">
-      
-        <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          textColor='secondary'
+          indicatorColor='secondary'
+          aria-label="secondary tabs example"
+        >
+          <Tab
+            value="Datos personales"
+            label="Datos personales"
+            wrapped
+            onClick={() => clickWindows("datosPersonales")}
+          />
 
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            textColor='secondary'
-            indicatorColor='secondary'
-            aria-label="secondary tabs example"
-          >
-            <Tab
-              value="Datos personales"
-              label="Datos personales"
-              wrapped
-              onClick={() => clickWindows("datosPersonales")}
-            />
+          <Tab
+            value="Servicios preferentes"
+            label="Servicios preferentes"
+            wrapped
+            onClick={() => clickWindows("servicios")}
+          />
 
-            <Tab
-              value="Servicios preferentes"
-              label="Servicios preferentes"
-              wrapped
-              onClick={() => clickWindows("servicios")}
-            />
+          <Tab
+            value="Interacciones"
+            label="Interacciones"
+            wrapped
+            onClick={() => clickWindows("interacciones")}
+          />
+          <Tab
+            value="Contratos"
+            label="Contratos"
+            wrapped
+            onClick={() => clickWindows("contratos")}
+          />
+          <Tab
+            value="Calendario"
+            label="Calendario"
+            wrapped
+            onClick={() => clickWindows("calendario")}
+          />
+        </Tabs>
 
-            <Tab
-              value="Interacciones"
-              label="Interacciones"
-              wrapped
-              onClick={() => clickWindows("interacciones")}
-            />
-            <Tab
-              value="Contratos"
-              label="Contratos"
-              wrapped
-              onClick={() => clickWindows("contratos")}
-            />
-          </Tabs>
-        </ThemeProvider>
-        
+      </ThemeProvider>
     </section>
 
   </>

@@ -5,17 +5,16 @@ const getAccessToken = require('../middlewares/getAccessToken');
 const decodeToken = require('../middlewares/decodeToken');
 const adminRoutes = require('../middlewares/adminRoutes');
 
-
-usersRouter.post('/signup', users.signup);
-usersRouter.post('/login', users.login); //va a controlador
-usersRouter.put('/revokeaccess?', users.revokeaccess); //va a controlador
-usersRouter.get('/logout', users.logout);
-usersRouter.get('/all', users.getAllUsers);
-
 /* usersRouter.get('/all', getAccessToken, decodeToken, adminRoutes, users.getAllUsers); //middlewares */
 // 1.- comprueba encabezado y Token y devuelve el Token
 // 2.- ese Token se descodifica con jwt y lo guardamos
 // 3.- se comprueba el rol
 // 4.- devuelve los usuarios como un JSON
+
+usersRouter.get('/logout', users.logout);
+usersRouter.get('/all', users.getAllUsers);
+usersRouter.post('/signup', users.signup);
+usersRouter.post('/login', users.login); //va a controlador
+usersRouter.put('/revokeaccess?', users.revokeaccess); //va a controlador
 
 module.exports = usersRouter;

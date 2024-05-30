@@ -15,6 +15,8 @@ router.get('/contratos', userController.getContractedCampaigns);
 router.get('/all', userController.getUsers);
 router.get('/avisos', userController.getAvisos);
 
-router.put('/sevicios', userController.getAvisos);
+router.post('/interacciones', userController.postInteractions)
+
+router.put('/servicios', userController.updateServices);
 
 module.exports = router;

@@ -1,0 +1,78 @@
+@import '../utils/mixins.scss';
+@import '../utils/variables.scss';
+
+.sign-form {
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    &>button {
+        @include button-normal-blue;
+        font-weight: 800;
+
+    }
+}
+
+.tarjeta {
+    width: 100%;
+	display: flex;
+	padding: 50px;
+}
+
+.tarjeta .tarjeta{
+	background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+	color: #000;
+	height: 350px;
+	width: 300px;
+	border-radius: 10px;
+	padding: 20px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	box-shadow: -3px 0 10px #000;
+
+	transition: all .3s ease;
+
+
+}
+
+.tarjeta .tarjeta:hover {
+	margin-right: 80px;
+	transform: rotate(3deg) translateY(-15px);
+}
+
+.tarjeta .card a{
+	color: #fff;
+	text-decoration: none;
+	font-weight: bolder;
+}
+
+.cards .card .header{
+	flex-grow: 1;
+}
+
+.cards .card .header .date{
+	padding: 10px 0;
+}
+
+.cards .card .header .title{
+	font-size: 30px;
+}
+
+.cards .card .footer .autor a{
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.cards .card .footer img{
+	width: 50px;
+}
+
+/*Establezca un margin-left a los elementos <div> que tengan un valor de atributo de clase que contenga "element":*/
+.cards .card[class*="element"]{
+	margin-left: -90px;
+}

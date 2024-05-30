@@ -1,7 +1,6 @@
 const express = require("express");
 const getAccessToken = express.Router();
 
-
 getAccessToken.use(async (req, res, next) => {
     const { cookie, authorization } = req.headers;
 
@@ -31,6 +30,5 @@ getAccessToken.use(async (req, res, next) => {
         res.sendStatus(403)
     };
 });
-
 
 module.exports = getAccessToken;

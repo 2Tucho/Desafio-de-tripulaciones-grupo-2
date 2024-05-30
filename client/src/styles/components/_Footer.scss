@@ -1,13 +1,12 @@
 @import '../utils/mixins.scss';
 @import '../utils/variables.scss';
 
-.footer{
-    visibility:hidden;
+.footer {
+    visibility: hidden;
     @include centered-column-layout;
-   
-    color:white;
+    color: white;
     height: 14vh;
     vertical-align: bottom;
-    width:100vw; 
-    background-color:$strong-blue;
+    width: 100vw;
+    background-color: $strong-blue;
 }

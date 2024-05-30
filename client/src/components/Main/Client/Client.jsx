@@ -6,29 +6,27 @@ const Client = () => {
 
   const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    const getUserResources = async () => {
-      try {
-        const request = await axios({
-          method: 'get',
-          url: '/api/resources/protectedresource',
-          withCredentials: true,
-        });
-        setMessage(request.data.msg);
-      } catch (error) {
-        console.log(error.message)
+  {message ? useEffect(() => {
+      const getUserResources = async () => {
+        try {
+          const request = await axios({
+            method: 'get',
+            url: '/api/resources/protectedresource',
+            withCredentials: true,
+          });
+          setMessage(request.data.msg);
+        } catch (error) {
+          console.log(error.message)
+        }
       }
-    }
-    getUserResources();
+      getUserResources();
 
-  }, [])
+    }, []) : null}
 
   return <div>
-    <Home/>
-
+    <Home />
     {message ? <h3>{message}</h3> : ""}
-
-  </div>;
+  </div>
 };
 
 export default Client;
