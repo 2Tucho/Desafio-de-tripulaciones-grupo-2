@@ -1,31 +1,23 @@
 @import '../utils/mixins.scss';
 @import '../utils/variables.scss';
 
-tab {
-
-}
 .cabecera_estudiante {
     @include centered-row-layout;
     justify-content: space-between;
-    
-
-
 }
+
 .windows {
     @include centered-row-layout;
-    margin-right:60px;
+    margin-right: 60px;
     align-items: right;
     justify-content: flex-end;
     height: 60px;
-    gap:20px;
-      
-    
+    gap: 20px;
 
     &>button {
         @include button-normal-purple;
-        height:32px; 
+        height: 32px;
     }
-
 }
 
 .nombre_estudiante {
@@ -35,5 +27,5 @@ tab {
 }
 
 .MuiButtonBase.MuiTab-root {
-        color: white;
+    color: white;
 }

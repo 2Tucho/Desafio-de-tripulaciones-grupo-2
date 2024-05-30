@@ -13,5 +13,10 @@ router.get('/servicios', userController.getServices);
 router.get('/interacciones', userController.getInteractions);
 router.get('/contratos', userController.getContractedCampaigns);
 router.get('/all', userController.getUsers);
+router.get('/avisos', userController.getAvisos);
+
+router.post('/interacciones', userController.postInteractions)
+
+router.put('/servicios', userController.updateServices);
 
 module.exports = router;

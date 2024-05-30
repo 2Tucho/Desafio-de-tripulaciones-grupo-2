@@ -1,6 +1,3 @@
-
-
-
 const getProtectedResources = (req, res) => {
     try {
         console.log(req.token.email);
@@ -9,13 +6,10 @@ const getProtectedResources = (req, res) => {
     } catch (error) {
         res.status(500).json({ msg: error.message });
     }
-
 };
-
 
 const resources = {
     getProtectedResources
 };
-
 
 module.exports = resources;

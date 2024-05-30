@@ -1,0 +1,23 @@
+@import '../utils/variables.scss';
+
+
+.avisosCont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15%;
+    margin: 16px;
+    border: 1px solid $dark-purple;
+    background-color: $light-purple ;
+    border-radius: 8px;
+}
+
+.h3Avisos{
+    color: $dark-purple;
+}
+
+.avisosLi{
+    padding: 16px;
+    color: $strong-blue;
+    list-style:none;
+}

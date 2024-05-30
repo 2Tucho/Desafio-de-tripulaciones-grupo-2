@@ -4,6 +4,6 @@ const manage404 = (req,res) => {
         msj:"404 not found",
         img:"https://seranking.com/blog/wp-content/uploads/2021/01/404_01-min.jpg"
     });
-}
+};
 
 module.exports = manage404;
